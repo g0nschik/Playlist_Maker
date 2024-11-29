@@ -1,19 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@color/blue_background"
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="@dimen/menu_padding"
+        android:layout_marginLeft="@dimen/menu_padding"
+        android:layout_marginRight="@dimen/menu_padding"
+        android:paddingBottom="@dimen/menu_padding">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/buttons_text_size" />
+    </FrameLayout>
+
+    <!-- кнопки -->
+
+    <FrameLayout
+        android:id="@+id/btn_search"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/layout_bg"
+        android:layout_marginTop="@dimen/menu_padding"
+        android:layout_marginLeft="@dimen/menu_padding"
+        android:layout_marginRight="@dimen/menu_padding">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:src="@drawable/ic_vector"
+                android:layout_width="@dimen/buttons_icon_size"
+                android:layout_height="@dimen/buttons_icon_size"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/buttons_icon_margin" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button_search"
+                android:textColor="@color/text_black"
+                android:textStyle="bold"
+                android:textSize="@dimen/buttons_text_size" />
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/btn_media"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/layout_bg"
+        android:layout_marginTop="@dimen/menu_padding"
+        android:layout_marginLeft="@dimen/menu_padding"
+        android:layout_marginRight="@dimen/menu_padding">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:src="@drawable/media"
+                android:layout_width="@dimen/buttons_icon_size"
+                android:layout_height="@dimen/buttons_icon_size"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/buttons_icon_margin"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button_media"
+                android:textColor="@color/text_black"
+                android:textStyle="bold"
+                android:textSize="@dimen/buttons_text_size" />
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/btn_settings"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/layout_bg"
+        android:layout_margin="@dimen/menu_padding">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:src="@drawable/settings"
+                android:layout_width="@dimen/buttons_icon_size"
+                android:layout_height="@dimen/buttons_icon_size"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/buttons_icon_margin"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button_settings"
+                android:textColor="@color/text_black"
+                android:textStyle="bold"
+                android:textSize="@dimen/buttons_text_size" />
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="buttons_text_size">22sp</dimen>
+    <dimen name="buttons_icon_size">24dp</dimen>
+    <dimen name="buttons_icon_margin">7dp</dimen>
+
+    <dimen name="menu_text_size">16sp</dimen>
+    <dimen name="menu_icon_size">24dp</dimen>
+    <dimen name="menu_padding">16dp</dimen>
+</resources>
