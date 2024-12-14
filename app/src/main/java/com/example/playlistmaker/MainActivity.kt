@@ -1,6 +1,8 @@
 package com.example.playlistmaker
 
+import android.app.Application
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 //import android.view.View
 //import android.widget.Button
@@ -37,31 +39,22 @@ class MainActivity : AppCompatActivity() {
             startActivity(displayIntent)
         }
 
-        /*
-            // Старые кнопки с "Тостами"
+    }
+}
 
-        val btn_1 = findViewById<FrameLayout>(R.id.btn_search)
+class MyCustomApplication : Application() {
+    // Вызывается при старте приложения, до того как инициализируются другие объекты
+    override fun onCreate() {
+        super.onCreate()
+    }
 
-        val imageClickListener: View.OnClickListener = object : View.OnClickListener {
-            override fun onClick(v: View?) {
-                Toast.makeText(this@MainActivity, "Нажали на кнопку ПОИСК", Toast.LENGTH_SHORT).show()
-            }
-        }
+    // Вызывается, когда конфигурация телефона изменена
+    override fun onConfigurationChanged ( newConfig : Configuration) {
+        super.onConfigurationChanged(newConfig)
+    }
 
-        btn_1.setOnClickListener(imageClickListener)
-
-        val btn_2 = findViewById<FrameLayout>(R.id.btn_media)
-
-        btn_2.setOnClickListener {
-            Toast.makeText(this@MainActivity, "Нажали на кнопку МЕДИАТЕКА", Toast.LENGTH_SHORT).show()
-        }
-
-        val btn_3 = findViewById<FrameLayout>(R.id.btn_settings)
-
-        btn_3.setOnClickListener {
-            Toast.makeText(this@MainActivity, "Нажали на кнопку НАСТРОЙКИ", Toast.LENGTH_SHORT).show()
-        }
-
-         */
+    // Вызывается, когда заканчивается память в системе
+    override fun onLowMemory() {
+        super.onLowMemory()
     }
 }
