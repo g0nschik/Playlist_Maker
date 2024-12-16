@@ -7,5 +7,9 @@
     <string name="menu_dark">Dark theme</string>
     <string name="menu_share">Share application</string>
     <string name="menu_support">Write to support</string>
+    <string name="support_subject">Message for developers of the applicati</string>
+    <string name="support_subject">M</string>
+    <string name="support_message">Thanks to the developers for the cool app!</string>
+    <string name="support_message">Thanks to the developers for the cool app!</string>
     <string name="menu_agreement">User agreement</string>
 </resources>

@@ -6,16 +6,17 @@
     <string name="menu_dark">Тёмная тема</string>
 
     <string name="menu_share">Поделиться приложением</string>
-    <string name="share_url">https://practicum.yandex.ru/referrals/?ref_code=gAAAAABmo_KiI0v1JXr0mzVglejzlHxQthCf54q8DeguprDZCnmcBXTrG_JNtvtmjGkk2Vb1kMHdGjeFToArtWDvrJ_beTvWDw%3D%3D</string>
+    <string name="share_url" translatable="false">https://practicum.yandex.ru/referrals/?ref_code=gAAAAABmo_KiI0v1JXr0mzVglejzlHxQthCf54q8DeguprDZCnmcBXTrG_JNtvtmjGkk2Vb1kMHdGjeFToArtWDvrJ_beTvWDw%3D%3D</string>
 
     <string name="menu_support">Написать в поддержку</string>
 
-    <string name="support_adress">1350077@mail.ru</string>
+    <string name="support_adress" translatable="false">1350077@mail.ru</string>
     <string name="support_subject">Сообщение разработчикам приложения Playlist Maker</string>
-    <string name="support_message">Спасибо разработчикам за крутое приложение!</string>
 
     <string name="menu_agreement">Пользовательское соглашение</string>
-    <string name="agreement_url">https://yandex.ru/legal/practicum_offer/</string>
+    <string name="agreement_url" translatable="false">https://yandex.ru/legal/practicum_offer/</string>
 
-    <string name="search_hint">@string/button_search</string>
+    <string name="search_hint" translatable="false">@string/button_search</string>
+    <string name="support_message">Спасибо разработчикам за крутое приложение!</string>
+    <string name="support_message">Спасибо разработчикам за крутое приложение!</string>
 </resources>
