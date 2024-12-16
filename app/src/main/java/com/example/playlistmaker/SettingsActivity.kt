@@ -35,7 +35,7 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         shareButton.setOnClickListener {
-            val url = "https://practicum.yandex.ru/referrals/?ref_code=gAAAAABmo_KiI0v1JXr0mzVglejzlHxQthCf54q8DeguprDZCnmcBXTrG_JNtvtmjGkk2Vb1kMHdGjeFToArtWDvrJ_beTvWDw%3D%3D"
+            val url = getString(R.string.share_url)
             val intent = Intent(Intent.ACTION_SEND)
             intent.type = "text/plain"
             intent.putExtra(Intent.EXTRA_TEXT, url)
@@ -52,7 +52,7 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         agreementButton.setOnClickListener {
-            val url = "https://yandex.ru/legal/practicum_offer/"
+            val url = getString(R.string.agreement_url)
             val intent = Intent(Intent.ACTION_VIEW)
             intent.data = Uri.parse(url)
             startActivity(intent)

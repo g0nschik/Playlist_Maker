@@ -6,7 +6,7 @@
         <item name="android:textSize">26sp</item>
         <item name="android:fontFamily">@font/ys_display_regular</item>
     </style>
-    <style name="ButtonStyle" parent="Widget.MaterialComponents.Button">
+    <style name="ButtonStyle" parent="Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingTop">@dimen/menu_padding</item>
@@ -46,5 +46,38 @@
         <item name="android:layout_height">16dp</item>
         <item name="android:layout_gravity">center_vertical</item>
         <item name="android:layout_marginEnd">24dp</item>
+    </style>
+    <style name="backButtonFrame">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/menu_padding</item>
+        <item name="android:layout_marginBottom">@dimen/menu_padding</item>
+    </style>
+    <style name="backButtonLine">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+    <style name="backButtonText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="SettingsLine">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/menu_padding</item>
+    </style>
+    <style name="SettingsLineText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">start</item>
+        <item name="android:textSize">@dimen/menu_text_size</item>
+    </style>
+    <style name="SettingsLineImage">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">end</item>
     </style>
 </resources>
