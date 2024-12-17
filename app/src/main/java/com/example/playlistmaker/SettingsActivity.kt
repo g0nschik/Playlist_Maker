@@ -1,10 +1,13 @@
 package com.example.playlistmaker
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.widget.ImageView
+import android.widget.FrameLayout
+import android.widget.Switch
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
@@ -20,11 +23,46 @@ class SettingsActivity : AppCompatActivity() {
             insets
         }
 
-        val backButton  = findViewById<ImageView>(R.id.btn_back)
+        val backButton  = findViewById<FrameLayout>(R.id.btn_back)
+        val shareButton  = findViewById<FrameLayout>(R.id.btn_share)
+        val supportButton  = findViewById<FrameLayout>(R.id.btn_support)
+        val agreementButton  = findViewById<FrameLayout>(R.id.btn_agreement)
+        val toggleDarkButton  = findViewById<Switch>(R.id.btn_dark_theme)
 
         backButton.setOnClickListener {
             val displayIntent = Intent(this, MainActivity::class.java)
             startActivity(displayIntent)
+        }
+
+        shareButton.setOnClickListener {
+            val url = getString(R.string.share_url)
+            val intent = Intent(Intent.ACTION_SEND)
+            intent.type = "text/plain"
+            intent.putExtra(Intent.EXTRA_TEXT, url)
+            startActivity(intent)
+        }
+
+        supportButton.setOnClickListener {
+            val intent = Intent(Intent.ACTION_SENDTO)
+            intent.data = Uri.parse("mailto:")
+            intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(getString(R.string.support_adress)))
+            intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.support_subject))
+            intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.support_message))
+            startActivity(intent)
+        }
+
+        agreementButton.setOnClickListener {
+            val url = getString(R.string.agreement_url)
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(url)
+            startActivity(intent)
+        }
+
+        toggleDarkButton.setOnClickListener { 
+            // check the mode
+            val isDarkMode = AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES
+            // set the other
+            AppCompatDelegate.setDefaultNightMode(if (isDarkMode) AppCompatDelegate.MODE_NIGHT_NO else AppCompatDelegate.MODE_NIGHT_YES)
         }
     }
 }

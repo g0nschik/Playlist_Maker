@@ -2,7 +2,7 @@ package com.example.playlistmaker
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ImageView
+import android.widget.FrameLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -19,7 +19,7 @@ class MediaActivity : AppCompatActivity() {
             insets
         }
 
-        val backButton  = findViewById<ImageView>(R.id.btn_back)
+        val backButton  = findViewById<FrameLayout>(R.id.btn_back)
 
         backButton.setOnClickListener {
             val displayIntent = Intent(this, MainActivity::class.java)

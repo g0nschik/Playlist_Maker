@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MessageTextStyle">
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:fontFamily">@font/ys_display_regular</item>
+    </style>
+    <style name="ButtonStyle" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">@dimen/menu_padding</item>
+        <item name="android:paddingLeft">@dimen/menu_padding</item>
+        <item name="android:paddingRight">@dimen/menu_padding</item>
+        <item name="android:gravity">center</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:textColor">@color/yp_black</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconPadding">8dp</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="iconTint">@color/yp_black</item>
+        <item name="android:fontFamily">@font/ys_display_medium</item>
+        <item name="background">@drawable/layout_bg</item>
+        <item name="layout_goneMarginTop">@dimen/menu_padding</item>
+        <item name="android:background">@color/white</item>
+    </style>
+    <style name="SearchLine">
+        <item name="background">@color/black</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+    <style name="ClearIcon">
+        <item name="android:visibility">gone</item>
+        <item name="android:layout_marginEnd">12dp</item>
+        <item name="tint">@color/search_color</item>
+        <item name="android:layout_width">12dp</item>
+        <item name="android:layout_height">12dp</item>
+        <item name="android:layout_gravity">end|center_vertical</item>
+    </style>
+    <style name="whiteBack">
+        <item name="android:background">@color/white</item>
+    </style>
+    <style name="backButton">
+        <item name="android:layout_width">16dp</item>
+        <item name="android:layout_height">16dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_marginEnd">24dp</item>
+    </style>
+    <style name="backButtonFrame">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/menu_padding</item>
+        <item name="android:layout_marginBottom">@dimen/menu_padding</item>
+    </style>
+    <style name="backButtonLine">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+    <style name="backButtonText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="SettingsLine">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/menu_padding</item>
+    </style>
+    <style name="SettingsLineText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">start</item>
+        <item name="android:textSize">@dimen/menu_text_size</item>
+    </style>
+    <style name="SettingsLineImage">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">end</item>
+    </style>
+</resources>
