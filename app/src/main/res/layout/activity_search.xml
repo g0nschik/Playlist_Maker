@@ -41,6 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_gravity="start|center_vertical"
+        android:autofillHints="true"
         android:background="@drawable/search_line_bg"
         android:drawableStart="@drawable/search_icon"
         android:drawablePadding="11dp"
@@ -61,6 +62,17 @@
         style="@style/ClearIcon"
         android:src="@drawable/icon_clear" />
 
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/itemsList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     </FrameLayout>
 
 </LinearLayout>
