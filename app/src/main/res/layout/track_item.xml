@@ -10,12 +10,12 @@
         android:src="@drawable/track_placeholder"
         android:layout_width="@dimen/track_small"
         android:layout_height="@dimen/track_small"
-        android:layout_gravity="center_vertical" />
+        android:layout_gravity="start|center_vertical" />
 
     <LinearLayout
-        android:layout_width="250dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
+        android:layout_gravity="center_vertical|start"
         android:layout_marginStart="8dp"
         android:layout_weight="1"
         android:orientation="vertical">
@@ -64,9 +64,8 @@
     </LinearLayout>
 
     <ImageView
-        android:layout_width="0dp"
+        android:layout_width="14dp"
         android:layout_height="14dp"
-        android:layout_gravity="center_vertical|end"
-        android:layout_weight="1"
+        android:layout_gravity="end|center_vertical"
         android:src="@drawable/arrow_forward" />
 </LinearLayout>
