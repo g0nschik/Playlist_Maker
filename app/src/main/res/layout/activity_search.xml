@@ -69,10 +69,44 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/itemsList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/itemsList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
     </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="120dp"
+        android:id="@+id/placeholderLayout"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:src="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/placeholderImage" />
+
+        <TextView
+            android:id="@+id/placeholderText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            style="@style/AlertTextStyle"
+            android:text="" />
+
+        <ImageView
+            android:src="@drawable/button_update"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/updateButton"
+            android:visibility="gone" />
+
+    </LinearLayout>
 
 </LinearLayout>
