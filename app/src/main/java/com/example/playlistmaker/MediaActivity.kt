@@ -9,6 +9,9 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MediaActivity : AppCompatActivity() {
+
+    private val imageUrl = "https://img.freepik.com/free-vector/open-blue-book-white_1308-69339.jpg"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -25,5 +28,6 @@ class MediaActivity : AppCompatActivity() {
             val displayIntent = Intent(this, MainActivity::class.java)
             startActivity(displayIntent)
         }
+
     }
 }
