@@ -72,7 +72,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/itemsList"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
 
     </FrameLayout>
 
@@ -82,7 +83,8 @@
         android:paddingTop="120dp"
         android:id="@+id/placeholderLayout"
         android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <ImageView
             android:src="@color/white"
@@ -96,8 +98,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            style="@style/AlertTextStyle"
-            android:text="" />
+            style="@style/AlertTextStyle" />
 
         <ImageView
             android:src="@drawable/button_update"
