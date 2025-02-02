@@ -31,6 +31,7 @@ class SettingsActivity : AppCompatActivity() {
 
         backButton.setOnClickListener {
             val displayIntent = Intent(this, MainActivity::class.java)
+            finish()
             startActivity(displayIntent)
         }
 

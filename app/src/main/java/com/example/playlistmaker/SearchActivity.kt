@@ -22,8 +22,6 @@ import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class SearchActivity : AppCompatActivity() {
     private var searchTextValue: CharSequence? = TEXT_DEF
@@ -32,15 +30,6 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var trackAdapter: TrackAdapter
     private lateinit var trackList: ArrayList<Track>
     private lateinit var placeholder: LinearLayout
-
-    private val baseUrl = "https://itunes.apple.com"
-
-    private val retrofit = Retrofit.Builder()
-        .baseUrl(baseUrl)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-
-    private val trackService = retrofit.create(TrackService::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,11 +43,11 @@ class SearchActivity : AppCompatActivity() {
             insets
         }
 
-        val backButton  = findViewById<FrameLayout>(R.id.btn_back)
+        val backButton = findViewById<FrameLayout>(R.id.btn_back)
         val searchLine = findViewById<EditText>(R.id.inputSearchText)
         val clearButton = findViewById<ImageView>(R.id.clearIcon)
         val updateButton = findViewById<ImageView>(R.id.updateButton)
-        
+
         placeholder = findViewById<LinearLayout>(R.id.placeholderLayout)
 
         searchLine.setOnEditorActionListener { _, actionId, _ ->
@@ -74,6 +63,7 @@ class SearchActivity : AppCompatActivity() {
 
         backButton.setOnClickListener {
             val displayIntent = Intent(this, MainActivity::class.java)
+            finish()
             startActivity(displayIntent)
         }
 
@@ -92,17 +82,15 @@ class SearchActivity : AppCompatActivity() {
         }
 
         val simpleTextWatcher = object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                //
-            }
-
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s.isNullOrEmpty()) {
-                    searchTextValue = null
-                } else {
-                    searchTextValue = s
-                }
+                searchTextValue = s?.takeIf { it.isNotEmpty() }
                 clearButton.visibility = clearButtonVisibility(s)
+                if (s.isNullOrEmpty()) {
+                    trackList.clear()
+                    recyclerView.visibility = View.GONE
+                    showMessage("hide")
+                }
             }
 
             override fun afterTextChanged(s: Editable?) {
@@ -126,26 +114,35 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun performSearch(query: String) {
-        trackService.search(query).enqueue(object : Callback<TrackResponse> {
+        RetrofitClient.trackService.search(query).enqueue(object : Callback<TrackResponse> {
             @SuppressLint("NotifyDataSetChanged")
             override fun onResponse(call: Call<TrackResponse>, response: Response<TrackResponse>) {
                 placeholder.visibility = View.GONE
+                trackAdapter.notifyDataSetChanged()
                 if (response.isSuccessful) {
                     trackList.clear()
-                    if (response.body()?.results?.isNotEmpty() == true) {
-                        trackList.addAll(response.body()?.results!!)
-                        trackAdapter.notifyDataSetChanged()
-                        recyclerView.visibility = View.VISIBLE
-                        showMessage("hide")
-                    } else {
+                    response.body()?.results?.let {
+                        if (it.isNotEmpty()) {
+                            trackList.addAll(it)
+                            recyclerView.visibility = View.VISIBLE
+                            showMessage("hide")
+                        } else {
+                            recyclerView.visibility = View.GONE // Скрываем RecyclerView
+                            showMessage("empty")
+                        }
+                    } ?: run {
+                        recyclerView.visibility = View.GONE // Скрываем RecyclerView
                         showMessage("empty")
                     }
                 } else {
+                    recyclerView.visibility = View.GONE // Скрываем RecyclerView
                     showMessage("error")
                 }
             }
 
             override fun onFailure(call: Call<TrackResponse>, t: Throwable) {
+                trackAdapter.notifyDataSetChanged()
+                recyclerView.visibility = View.GONE // Скрываем RecyclerView
                 showMessage("error")
             }
         })

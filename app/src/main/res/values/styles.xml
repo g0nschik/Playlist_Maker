@@ -29,6 +29,7 @@
     <style name="SearchLine">
         <item name="background">@color/black</item>
         <item name="cornerRadius">8dp</item>
+        <item name="cursorColor">@color/cursor_color</item>
     </style>
     <style name="ClearIcon">
         <item name="android:visibility">gone</item>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -35,8 +36,18 @@
 
         <Switch
             android:id="@+id/btn_dark_theme"
-            android:layout_marginEnd="-7dp"
-            style="@style/SettingsLineImage" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:checked="false"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+        <!--
+            TODO - Убрал padding, выполнил рекомендацию Android Studio (последняя строчка),
+            TODO - как ещё можно подогнать Switch для точного соответствия дизайну, не понимаю.
+            TODO - В материалах курса тоже не нашёл информации по этому поводу
+            TODO - Буду благодарен за подсказку
+            -->
+
     </FrameLayout>
 
     <FrameLayout
