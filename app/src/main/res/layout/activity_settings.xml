@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -27,28 +28,15 @@
 
     <!-- пункты меню -->
 
-    <FrameLayout
-        style="@style/SettingsLine">
-
-        <TextView
-            android:text="@string/menu_dark"
-            style="@style/SettingsLineText" />
-
-        <Switch
-            android:id="@+id/btn_dark_theme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|center_vertical"
-            android:checked="false"
-            tools:ignore="UseSwitchCompatOrMaterialXml" />
-        <!--
-            TODO - Убрал padding, выполнил рекомендацию Android Studio (последняя строчка),
-            TODO - как ещё можно подогнать Switch для точного соответствия дизайну, не понимаю.
-            TODO - В материалах курса тоже не нашёл информации по этому поводу
-            TODO - Буду благодарен за подсказку
-            -->
-
-    </FrameLayout>
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/btn_dark_theme"
+        android:text="@string/menu_dark"
+        style="@style/SettingsLineSwitch"
+        android:layout_gravity="start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:thumbTint="@color/switch_knob"
+        app:trackTint="@color/switch_track" />
 
     <FrameLayout
         android:id="@+id/btn_share"

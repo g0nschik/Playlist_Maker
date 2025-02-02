@@ -1,17 +1,19 @@
 package com.example.playlistmaker
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.FrameLayout
-import android.widget.Switch
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.switchmaterial.SwitchMaterial
 
 class SettingsActivity : AppCompatActivity() {
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -23,11 +25,11 @@ class SettingsActivity : AppCompatActivity() {
             insets
         }
 
-        val backButton  = findViewById<FrameLayout>(R.id.btn_back)
-        val shareButton  = findViewById<FrameLayout>(R.id.btn_share)
-        val supportButton  = findViewById<FrameLayout>(R.id.btn_support)
-        val agreementButton  = findViewById<FrameLayout>(R.id.btn_agreement)
-        val toggleDarkButton  = findViewById<Switch>(R.id.btn_dark_theme)
+        val backButton = findViewById<FrameLayout>(R.id.btn_back)
+        val shareButton = findViewById<FrameLayout>(R.id.btn_share)
+        val supportButton = findViewById<FrameLayout>(R.id.btn_support)
+        val agreementButton = findViewById<FrameLayout>(R.id.btn_agreement)
+        val toggleDarkButton = findViewById<SwitchMaterial>(R.id.btn_dark_theme)
 
         backButton.setOnClickListener {
             val displayIntent = Intent(this, MainActivity::class.java)

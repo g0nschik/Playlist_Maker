@@ -81,6 +81,16 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">end</item>
     </style>
+    <style name="SettingsLineSwitch">
+        <item name="android:textSize">@dimen/menu_text_size</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingLeft">@dimen/menu_padding</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:colorControlActivated">@color/cursor_color</item>
+        <item name="android:colorControlNormal">#AEAFB4</item>
+        <item name="android:colorActivatedHighlight">#333333</item>
+    </style>
 
     <style name="TrackNameStyle">
         <item name="android:textColor">@color/yp_black</item>
