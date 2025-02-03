@@ -10,4 +10,8 @@
     <string name="support_subject">Message for developers of the application</string>
     <string name="support_message">Thanks to the developers for the cool app!</string>
     <string name="menu_agreement">User agreement</string>
+    <string name="loading">Searching...</string>
+    <string name="no_results">No results</string>
+    <string name="net_error">"Network failture. Something went wrong. "</string>
+    <string name="button_update">Refresh</string>
 </resources>

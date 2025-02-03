@@ -1,17 +1,21 @@
 package com.example.playlistmaker
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.widget.FrameLayout
-import android.widget.Switch
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.switchmaterial.SwitchMaterial
 
 class SettingsActivity : AppCompatActivity() {
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -23,15 +27,16 @@ class SettingsActivity : AppCompatActivity() {
             insets
         }
 
-        val backButton  = findViewById<FrameLayout>(R.id.btn_back)
-        val shareButton  = findViewById<FrameLayout>(R.id.btn_share)
-        val supportButton  = findViewById<FrameLayout>(R.id.btn_support)
-        val agreementButton  = findViewById<FrameLayout>(R.id.btn_agreement)
-        val toggleDarkButton  = findViewById<Switch>(R.id.btn_dark_theme)
+        val backButton = findViewById<FrameLayout>(R.id.btn_back)
+        val shareButton = findViewById<FrameLayout>(R.id.btn_share)
+        val supportButton = findViewById<FrameLayout>(R.id.btn_support)
+        val agreementButton = findViewById<FrameLayout>(R.id.btn_agreement)
+        val toggleDarkButton = findViewById<SwitchMaterial>(R.id.btn_dark_theme)
+
+        toggleDarkButton.isChecked = (applicationContext as App).darkTheme
 
         backButton.setOnClickListener {
-            val displayIntent = Intent(this, MainActivity::class.java)
-            startActivity(displayIntent)
+            finish()
         }
 
         shareButton.setOnClickListener {
@@ -58,11 +63,8 @@ class SettingsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        toggleDarkButton.setOnClickListener { 
-            // check the mode
-            val isDarkMode = AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES
-            // set the other
-            AppCompatDelegate.setDefaultNightMode(if (isDarkMode) AppCompatDelegate.MODE_NIGHT_NO else AppCompatDelegate.MODE_NIGHT_YES)
+        toggleDarkButton.setOnCheckedChangeListener { switch, checked ->
+            (applicationContext as App).switchTheme(checked)
         }
     }
 }
