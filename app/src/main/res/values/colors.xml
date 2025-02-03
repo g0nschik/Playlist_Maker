@@ -8,8 +8,10 @@
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#818C99</color>
 
+    <color name="yp_blue">#3772E7</color>
     <color name="search_color">@color/grey</color>
-    <color name="cursor_color">#3772E7</color>
+    <color name="search_text_color">#1A1B22</color>
+    <color name="search_hint_color">#AEAFB4</color>
 
     <color name="switch_knob">#AEAFB4</color>
     <color name="switch_track">#E6E8EB</color>

@@ -62,9 +62,7 @@ class SearchActivity : AppCompatActivity() {
         }
 
         backButton.setOnClickListener {
-            val displayIntent = Intent(this, MainActivity::class.java)
             finish()
-            startActivity(displayIntent)
         }
 
         clearButton.setOnClickListener {
@@ -100,6 +98,7 @@ class SearchActivity : AppCompatActivity() {
         searchLine.addTextChangedListener(simpleTextWatcher)
 
         recyclerView = findViewById(R.id.itemsList)
+        recyclerView.visibility = View.GONE
 
         trackList = ArrayList()
         trackAdapter = TrackAdapter(trackList)

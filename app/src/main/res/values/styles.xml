@@ -29,7 +29,7 @@
     <style name="SearchLine">
         <item name="background">@color/black</item>
         <item name="cornerRadius">8dp</item>
-        <item name="cursorColor">@color/cursor_color</item>
+        <item name="cursorColor">@color/yp_blue</item>
     </style>
     <style name="ClearIcon">
         <item name="android:visibility">gone</item>
@@ -87,7 +87,7 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:paddingLeft">@dimen/menu_padding</item>
         <item name="android:paddingRight">10dp</item>
-        <item name="android:colorControlActivated">@color/cursor_color</item>
+        <item name="android:colorControlActivated">@color/yp_blue</item>
         <item name="android:colorControlNormal">#AEAFB4</item>
         <item name="android:colorActivatedHighlight">#333333</item>
     </style>

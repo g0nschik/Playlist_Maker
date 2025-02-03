@@ -53,8 +53,9 @@
         android:paddingStart="15dp"
         android:paddingEnd="15dp"
         android:singleLine="true"
-        android:textColor="@color/search_color"
-        android:textColorHint="@color/search_color"
+        android:textColor="@color/search_text_color"
+        android:textCursorDrawable="@drawable/cursor_color"
+        android:textColorHint="@color/search_hint_color"
         android:textSize="@dimen/menu_text_size" />
 
     <ImageButton

@@ -8,9 +8,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#818C99</color>
 
-    <color name="search_color">@color/black</color>
+    <color name="search_hint_color">#1A1B22</color>
 
-    <color name="switch_knob">@color/cursor_color</color>
+    <color name="switch_knob">@color/yp_blue</color>
     <color name="switch_track">#9FBBF3</color>
 
     <color name="purple_200">#FFBB86FC</color>
