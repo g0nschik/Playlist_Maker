@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/top_padding"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/search_history"
+            style="@style/AlertTextStyle" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/itemsHistoryList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/top_20"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/clearHistoryButton"
+            style="@style/RegularButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_clear_history" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
