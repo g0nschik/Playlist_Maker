@@ -5,6 +5,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 const val HISTORY_KEY = "search_history"
+const val HISTORY_SIZE = 10
 
 class SearchHistory(
     private val sharedPreferences: SharedPreferences,
@@ -22,7 +23,7 @@ class SearchHistory(
         val history = getHistory()
         history.removeIf { it.trackId == track.trackId }
         history.add(0, track)
-        if (history.size > 10) {
+        if (history.size > HISTORY_SIZE) {
             history.removeAt(history.size - 1)
         }
         saveHistory(history)

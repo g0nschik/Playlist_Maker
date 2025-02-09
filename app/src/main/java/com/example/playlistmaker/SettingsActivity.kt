@@ -30,7 +30,7 @@ class SettingsActivity : AppCompatActivity() {
         val agreementButton = findViewById<FrameLayout>(R.id.btn_agreement)
         val toggleDarkButton = findViewById<SwitchMaterial>(R.id.btn_dark_theme)
 
-        toggleDarkButton.isChecked = (applicationContext as App).darkTheme
+        toggleDarkButton.isChecked = (applicationContext as App).isDark()
 
         backButton.setOnClickListener {
             finish()
