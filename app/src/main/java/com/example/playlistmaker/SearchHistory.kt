@@ -12,7 +12,7 @@ class SearchHistory(
 
     private val gson = Gson()
 
-    fun getHistory(): ArrayList<Track> {
+    fun getHistory(): List<Track> {
         val json = sharedPreferences.getString(HISTORY_KEY, null) ?: return ArrayList()
         val type = object : TypeToken<ArrayList<Track>>() {}.type
         return gson.fromJson(json, type) ?: ArrayList()
