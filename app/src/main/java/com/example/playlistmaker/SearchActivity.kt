@@ -13,7 +13,6 @@ import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -24,7 +23,15 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class SearchActivity : AppCompatActivity() {
+class SearchActivity : AppCompatActivity(), HistoryCallback {
+    enum class MessageType {
+        LOADING,
+        EMPTY,
+        ERROR,
+        HIDE,
+        CLEAR
+    }
+
     private var searchTextValue: CharSequence? = TEXT_DEF
 
     private lateinit var recyclerView: RecyclerView
@@ -78,7 +85,7 @@ class SearchActivity : AppCompatActivity() {
         clearButton.setOnClickListener {
             hideInput()
             searchLine.clearFocus()
-            showMessage("clear")
+            showMessage(MessageType.CLEAR)
             searchLine.setText(TEXT_DEF)
         }
 
@@ -89,7 +96,7 @@ class SearchActivity : AppCompatActivity() {
                 clearButton.visibility = clearButtonVisibility(s)
 
                 if (s.isNullOrEmpty()) {
-                    showMessage("clear")
+                    showMessage(MessageType.CLEAR)
                     if (trackListHistory.isNotEmpty()) {
                         if (searchLine.hasFocus()) {
                             content.addView(historyView)
@@ -112,14 +119,14 @@ class SearchActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.itemsList)
         recyclerView.visibility = View.GONE
         trackList = ArrayList()
-        trackAdapter = TrackAdapter(trackList, searchHistory)
+        trackAdapter = TrackAdapter(trackList) { clickOnTrack(it) }
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = trackAdapter
         recyclerViewHistory = historyView.findViewById(R.id.itemsHistoryList)
 
         trackListHistory.addAll(searchHistory.getHistory())
 
-        trackAdapterHistory = TrackAdapter(trackListHistory, searchHistory)
+        trackAdapterHistory = TrackAdapter(trackListHistory) { clickOnTrack(it) }
         recyclerViewHistory.layoutManager = LinearLayoutManager(this)
         recyclerViewHistory.adapter = trackAdapterHistory
 
@@ -140,6 +147,10 @@ class SearchActivity : AppCompatActivity() {
         }
     }
 
+    private fun clickOnTrack(track: Track) {
+        searchHistory.addTrack(track)
+    }
+
     private fun hideInput() {
         val searchLine = findViewById<EditText>(R.id.inputSearchText)
         val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
@@ -147,45 +158,45 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun performSearch(query: String) {
-        showMessage("loading")
+        showMessage(MessageType.LOADING)
         RetrofitClient.trackService.search(query).enqueue(object : Callback<TrackResponse> {
             @SuppressLint("NotifyDataSetChanged")
             override fun onResponse(call: Call<TrackResponse>, response: Response<TrackResponse>) {
                 if (response.isSuccessful) {
                     response.body()?.results?.let {
                         if (it.isNotEmpty()) {
-                            showMessage("hide")
+                            showMessage(MessageType.HIDE)
                             trackList.addAll(it)
                             trackAdapter.notifyDataSetChanged()
                             recyclerView.visibility = View.VISIBLE
                         } else {
-                            showMessage("empty")
+                            showMessage(MessageType.EMPTY)
                         }
                     } ?: run {
-                        showMessage("empty")
+                        showMessage(MessageType.EMPTY)
                     }
                 } else {
-                    showMessage("error")
+                    showMessage(MessageType.ERROR)
                 }
             }
 
             override fun onFailure(call: Call<TrackResponse>, t: Throwable) {
-                showMessage("error")
+                showMessage(MessageType.ERROR)
             }
         })
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    private fun showMessage(type: String) {
+    private fun showMessage(type: MessageType) {
         content.removeAllViews()
 
-        if (type == "hide") return
+        if (type == MessageType.HIDE) return
 
         trackList.clear()
         recyclerView.visibility = View.GONE
         trackAdapter.notifyDataSetChanged()
 
-        if (type == "clear") return
+        if (type == MessageType.CLEAR) return
 
         val messageView = LayoutInflater.from(this).inflate(R.layout.message_block, content, false)
 
@@ -200,16 +211,16 @@ class SearchActivity : AppCompatActivity() {
         updateButton.visibility = View.GONE
 
         when (type) {
-            "loading" -> {
+            MessageType.LOADING -> {
                 messageImage.visibility = View.GONE
                 messageText.text = getString(R.string.loading)
             }
-            "empty" -> {
+            MessageType.EMPTY -> {
                 messageImage.setImageResource(R.drawable.no_results)
                 messageImage.visibility = View.VISIBLE
                 messageText.text = getString(R.string.no_results)
             }
-            "error" -> {
+            MessageType.ERROR -> {
                 messageImage.setImageResource(R.drawable.net_error)
                 messageImage.visibility = View.VISIBLE
                 messageText.text = getString(R.string.net_error)
@@ -221,7 +232,7 @@ class SearchActivity : AppCompatActivity() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun reloadHistory() {
+    override fun reloadHistory() {
         if (trackListHistory.isNotEmpty()) trackListHistory.clear()
         trackListHistory.addAll(searchHistory.getHistory())
         trackAdapterHistory.notifyDataSetChanged()

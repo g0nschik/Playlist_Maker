@@ -7,9 +7,14 @@ import com.google.gson.reflect.TypeToken
 const val HISTORY_KEY = "search_history"
 const val HISTORY_SIZE = 10
 
+interface HistoryCallback {
+    fun reloadHistory()
+}
+
 class SearchHistory(
     private val sharedPreferences: SharedPreferences,
-    private val searchActivity: SearchActivity) {
+    private val historyCallback: HistoryCallback
+) {
 
     private val gson = Gson()
 
@@ -31,12 +36,12 @@ class SearchHistory(
 
     fun clearHistory() {
         sharedPreferences.edit().remove(HISTORY_KEY).apply()
-        searchActivity.reloadHistory()
+        historyCallback.reloadHistory()
     }
 
     private fun saveHistory(history: ArrayList<Track>) {
         val json = gson.toJson(history)
         sharedPreferences.edit().putString(HISTORY_KEY, json).apply()
-        searchActivity.reloadHistory()
+        historyCallback.reloadHistory()
     }
 }

@@ -15,7 +15,7 @@ import java.util.Locale
 
 class TrackAdapter(
     private val trackList: ArrayList<Track>,
-    private val searchHistory: SearchHistory) : RecyclerView.Adapter<TrackAdapter.TrackViewHolder>() {
+    private val clickCallback: (Track) -> Unit) : RecyclerView.Adapter<TrackAdapter.TrackViewHolder>() {
 
     inner class TrackViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val trackNameTextView: TextView = view.findViewById(R.id.trackNameTextView)
@@ -43,6 +43,10 @@ class TrackAdapter(
                 .centerInside()
                 .transform(RoundedCorners(dpToPx(2f)))
                 .into(trackImageView)
+
+            itemView.setOnClickListener {
+                clickCallback(track)
+            }
         }
     }
 
@@ -54,9 +58,6 @@ class TrackAdapter(
     @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: TrackViewHolder, position: Int) {
         holder.bind(trackList[position])
-        holder.itemView.setOnClickListener { track ->
-            searchHistory.addTrack(trackList[position])
-        }
     }
 
     override fun getItemCount(): Int = trackList.size
