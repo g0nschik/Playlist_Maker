@@ -226,6 +226,9 @@ class SearchActivity : AppCompatActivity(), HistoryCallback {
                 messageText.text = getString(R.string.net_error)
                 updateButton.visibility = View.VISIBLE
             }
+            else -> {
+                
+            }
         }
 
         content.addView(messageView)
