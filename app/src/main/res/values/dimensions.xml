@@ -12,4 +12,10 @@
 
     <dimen name="top_padding">60dp</dimen>
     <dimen name="top_20">20dp</dimen>
+
+    <dimen name="padding_24">24dp</dimen>
+    <dimen name="padding_8">4dp</dimen>
+    <dimen name="padding_4">4dp</dimen>
+    <dimen name="padding_16">16dp</dimen>
+
 </resources>

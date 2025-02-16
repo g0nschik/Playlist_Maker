@@ -1,6 +1,7 @@
 package com.example.playlistmaker
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -149,6 +150,8 @@ class SearchActivity : AppCompatActivity(), HistoryCallback {
 
     private fun clickOnTrack(track: Track) {
         searchHistory.addTrack(track)
+        val displayIntent = Intent(this, PlayerActivity::class.java)
+        startActivity(displayIntent)
     }
 
     private fun hideInput() {
