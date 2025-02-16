@@ -2,14 +2,11 @@ package com.example.playlistmaker
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.widget.FrameLayout
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.switchmaterial.SwitchMaterial
@@ -33,7 +30,7 @@ class SettingsActivity : AppCompatActivity() {
         val agreementButton = findViewById<FrameLayout>(R.id.btn_agreement)
         val toggleDarkButton = findViewById<SwitchMaterial>(R.id.btn_dark_theme)
 
-        toggleDarkButton.isChecked = (applicationContext as App).darkTheme
+        toggleDarkButton.isChecked = (applicationContext as App).isDark()
 
         backButton.setOnClickListener {
             finish()

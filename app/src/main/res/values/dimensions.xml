@@ -9,4 +9,7 @@
     <dimen name="menu_padding">16dp</dimen>
 
     <dimen name="track_small">45dp</dimen>
+
+    <dimen name="top_padding">60dp</dimen>
+    <dimen name="top_20">20dp</dimen>
 </resources>

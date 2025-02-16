@@ -8,8 +8,7 @@ const val APP_SETTINGS = "settings"
 const val DARK_MODE = "dark_mode"
 
 class App : Application() {
-
-    var darkTheme = false
+    private var darkTheme = false
     private lateinit var sharedPrefs: SharedPreferences
 
     override fun onCreate() {
@@ -34,5 +33,9 @@ class App : Application() {
         sharedPrefs.edit()
             .putBoolean(DARK_MODE, darkTheme)
             .apply()
+    }
+
+    fun isDark(): Boolean {
+        return darkTheme
     }
 }

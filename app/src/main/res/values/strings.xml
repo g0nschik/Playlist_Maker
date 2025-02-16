@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Playlist Maker</string>
+    <string name="app_name" translatable="false">Playlist Maker</string>
     <string name="button_search">Поиск</string>
     <string name="button_media">Медиатека</string>
     <string name="button_settings">Настройки</string>
@@ -20,8 +20,10 @@
     <string name="support_message">Спасибо разработчикам за крутое приложение!</string>
 
     <string name="button_update">Обновить</string>
+    <string name="button_clear_history">Очистить историю</string>
 
     <string name="loading">Выполняется поиск...</string>
+    <string name="search_history">Вы искали</string>
     <string name="no_results">Ничего не нашлось</string>
-    <string name="net_error">\nПроблемы со связью.\n\nЗагрузка не удалась. Проверьте подключение к интернету\n</string>
+    <string name="net_error">\nПроблемы со связью.\n\nЗагрузка не удалась. Проверьте подключение к интернету</string>
 </resources>
