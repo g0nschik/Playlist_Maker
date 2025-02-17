@@ -123,4 +123,50 @@
         <item name="android:backgroundTint">@color/yp_black</item>
         <item name="cornerRadius">54dp</item>
     </style>
+
+    <style name="PlayerTrackNameStyle">
+        <item name="android:textColor">@color/yp_black</item>
+        <item name="android:fontFamily">@font/ys_display_regular</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:lineHeight">25.78sp</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="layout_constrainedWidth">true</item>
+    </style>
+    <style name="PlayerArtistNameStyle">
+        <item name="android:textColor">@color/yp_black</item>
+        <item name="android:fontFamily">@font/ys_display_medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineHeight">16.41sp</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="layout_constrainedWidth">true</item>
+    </style>
+    <style name="PlayerTrackInfoLeft">
+        <item name="android:textColor">@color/yp_text_grey</item>
+        <item name="android:fontFamily">@font/ys_display_medium</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:lineHeight">15.24sp</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:ellipsize">end</item>
+        <item name="maxLines">1</item>
+        <item name="layout_constrainedWidth">true</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">@dimen/padding_8</item>
+    </style>
+    <style name="PlayerTrackInfoRight">
+        <item name="android:textColor">@color/yp_black</item>
+        <item name="android:fontFamily">@font/ys_display_medium</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:lineHeight">15.24sp</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:ellipsize">end</item>
+        <item name="maxLines">1</item>
+        <item name="layout_constrainedWidth">true</item>
+        <item name="android:gravity">end</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">@dimen/padding_8</item>
+    </style>
+
+
 </resources>

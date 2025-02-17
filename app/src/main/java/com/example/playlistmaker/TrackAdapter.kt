@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.util.TypedValueCompat.dpToPx
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -23,14 +24,6 @@ class TrackAdapter(
         private val trackTimeTextView: TextView = view.findViewById(R.id.trackTimeTextView)
         private val trackImageView: ImageView = view.findViewById(R.id.trackImageView)
 
-        fun dpToPx(dp: Float): Int {
-            return TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP,
-                dp,
-                itemView.context.resources.displayMetrics
-            ).toInt()
-        }
-
         fun bind(track: Track) {
             trackNameTextView.text = track.trackName
             artistNameTextView.text = track.artistName
@@ -41,7 +34,7 @@ class TrackAdapter(
                 .load(track.artworkUrl100 ?: "")
                 .placeholder(R.drawable.track_placeholder)
                 .centerInside()
-                .transform(RoundedCorners(dpToPx(2f)))
+                .transform(RoundedCorners(dpToPx(2f, itemView.resources.displayMetrics).toInt()))
                 .into(trackImageView)
 
             itemView.setOnClickListener {

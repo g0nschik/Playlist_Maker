@@ -5,11 +5,12 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.FrameLayout
+import android.widget.Switch
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.google.android.material.switchmaterial.SwitchMaterial
+//import com.google.android.material.switchmaterial.SwitchMaterial
 
 class SettingsActivity : AppCompatActivity() {
     @SuppressLint("UseSwitchCompatOrMaterialCode")
@@ -25,16 +26,17 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         val backButton = findViewById<FrameLayout>(R.id.btn_back)
-        val shareButton = findViewById<FrameLayout>(R.id.btn_share)
-        val supportButton = findViewById<FrameLayout>(R.id.btn_support)
-        val agreementButton = findViewById<FrameLayout>(R.id.btn_agreement)
-        val toggleDarkButton = findViewById<SwitchMaterial>(R.id.btn_dark_theme)
-
-        toggleDarkButton.isChecked = (applicationContext as App).isDark()
 
         backButton.setOnClickListener {
             finish()
         }
+
+        val shareButton = findViewById<FrameLayout>(R.id.btn_share)
+        val supportButton = findViewById<FrameLayout>(R.id.btn_support)
+        val agreementButton = findViewById<FrameLayout>(R.id.btn_agreement)
+        val toggleDarkButton = findViewById<Switch>(R.id.btn_dark_theme)
+
+        toggleDarkButton.isChecked = (applicationContext as App).isDark()
 
         shareButton.setOnClickListener {
             val url = getString(R.string.share_url)

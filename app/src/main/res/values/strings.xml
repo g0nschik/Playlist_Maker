@@ -26,4 +26,18 @@
     <string name="search_history">Вы искали</string>
     <string name="no_results">Ничего не нашлось</string>
     <string name="net_error">\nПроблемы со связью.\n\nЗагрузка не удалась. Проверьте подключение к интернету</string>
+
+    <string name="test_artist" translatable="false">Beatles</string>
+    <string name="test_track" translatable="false">Yesterday (Remastered 2009)</string>
+    <string name="one_three_five" translatable="false">1:35</string>
+    <string name="test_time" translatable="false">5:35</string>
+    <string name="test_year" translatable="false">1965</string>
+    <string name="test_genre" translatable="false">Rock</string>
+    <string name="test_country">Великобритания</string>
+    
+    <string name="track_time">Длительность</string>
+    <string name="track_album">Альбом</string>
+    <string name="track_year">Год</string>
+    <string name="track_genre">Жанр</string>
+    <string name="track_country">Страна</string>
 </resources>
