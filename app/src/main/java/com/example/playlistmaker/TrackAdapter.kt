@@ -1,7 +1,8 @@
 package com.example.playlistmaker
 
 import android.annotation.SuppressLint
-import android.util.TypedValue
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,12 +12,13 @@ import androidx.core.util.TypedValueCompat.dpToPx
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import java.text.SimpleDateFormat
-import java.util.Locale
 
 class TrackAdapter(
     private val trackList: ArrayList<Track>,
     private val clickCallback: (Track) -> Unit) : RecyclerView.Adapter<TrackAdapter.TrackViewHolder>() {
+
+    private var isClickAllowed = true
+    private val handler = Handler(Looper.getMainLooper())
 
     inner class TrackViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val trackNameTextView: TextView = view.findViewById(R.id.trackNameTextView)
@@ -28,7 +30,7 @@ class TrackAdapter(
             trackNameTextView.text = track.trackName
             artistNameTextView.text = track.artistName
             artistNameTextView.requestLayout()
-            trackTimeTextView.text = SimpleDateFormat("mm:ss", Locale.getDefault()).format(track.trackTimeMillis)
+            trackTimeTextView.text = track.formattedTime()
 
             Glide.with(itemView)
                 .load(track.artworkUrl100 ?: "")
@@ -38,7 +40,9 @@ class TrackAdapter(
                 .into(trackImageView)
 
             itemView.setOnClickListener {
-                clickCallback(track)
+                if (clickDebounce()) {
+                    clickCallback(track)
+                }
             }
         }
     }
@@ -54,4 +58,17 @@ class TrackAdapter(
     }
 
     override fun getItemCount(): Int = trackList.size
+
+    companion object {
+        private const val CLICK_DEBOUNCE_DELAY = 1000L
+    }
+
+    private fun clickDebounce() : Boolean {
+        val current = isClickAllowed
+        if (isClickAllowed) {
+            isClickAllowed = false
+            handler.postDelayed({ isClickAllowed = true }, CLICK_DEBOUNCE_DELAY)
+        }
+        return current
+    }
 }

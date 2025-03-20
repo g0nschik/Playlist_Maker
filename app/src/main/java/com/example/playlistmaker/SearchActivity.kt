@@ -3,6 +3,8 @@ package com.example.playlistmaker
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
@@ -13,6 +15,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -34,6 +37,9 @@ class SearchActivity : AppCompatActivity(), HistoryCallback {
     }
 
     private var searchTextValue: CharSequence? = TEXT_DEF
+
+    private val handler = Handler(Looper.getMainLooper())
+    private val searchRunnable = Runnable { performSearch() }
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var recyclerViewHistory: RecyclerView
@@ -72,7 +78,7 @@ class SearchActivity : AppCompatActivity(), HistoryCallback {
         searchLine.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 hideInput()
-                performSearch(searchLine.text.toString())
+                performSearch()
                 true
             } else {
                 false
@@ -109,6 +115,7 @@ class SearchActivity : AppCompatActivity(), HistoryCallback {
                 }
                 else {
                     content.removeAllViews()
+                    searchDebounce()
                 }
             }
             override fun afterTextChanged(s: Editable?) {
@@ -148,6 +155,14 @@ class SearchActivity : AppCompatActivity(), HistoryCallback {
         }
     }
 
+    private fun searchDebounce() {
+        handler.removeCallbacks(searchRunnable)
+        
+        if (searchLine.text.toString().length >= 3) {
+            handler.postDelayed(searchRunnable, SEARCH_DEBOUNCE_DELAY)
+        }
+    }
+
     private fun clickOnTrack(track: Track) {
         searchHistory.addTrack(track)
         val displayIntent = Intent(this, PlayerActivity::class.java)
@@ -160,7 +175,9 @@ class SearchActivity : AppCompatActivity(), HistoryCallback {
         imm.hideSoftInputFromWindow(searchLine.windowToken, 0)
     }
 
-    private fun performSearch(query: String) {
+    private fun performSearch() {
+        val query = searchLine.text.toString()
+
         showMessage(MessageType.LOADING)
         RetrofitClient.trackService.search(query).enqueue(object : Callback<TrackResponse> {
             @SuppressLint("NotifyDataSetChanged")
@@ -206,17 +223,20 @@ class SearchActivity : AppCompatActivity(), HistoryCallback {
         val messageImage: ImageView = messageView.findViewById(R.id.placeholderImage)
         val messageText: TextView = messageView.findViewById(R.id.placeholderText)
         val updateButton: TextView = messageView.findViewById(R.id.updateButton)
+        val progressBar: ProgressBar = messageView.findViewById(R.id.progressBar)
 
         updateButton.setOnClickListener {
-            performSearch(searchLine.text.toString())
+            performSearch()
         }
 
         updateButton.visibility = View.GONE
+        progressBar.visibility = View.GONE
 
         when (type) {
             MessageType.LOADING -> {
                 messageImage.visibility = View.GONE
-                messageText.text = getString(R.string.loading)
+                messageText.visibility = View.GONE
+                progressBar.visibility = View.VISIBLE
             }
             MessageType.EMPTY -> {
                 messageImage.setImageResource(R.drawable.no_results)
@@ -230,7 +250,7 @@ class SearchActivity : AppCompatActivity(), HistoryCallback {
                 updateButton.visibility = View.VISIBLE
             }
             else -> {
-                
+                // Nothing else :)
             }
         }
 
@@ -262,5 +282,6 @@ class SearchActivity : AppCompatActivity(), HistoryCallback {
         const val SEARCH_TEXT_VALUE = "SEARCH_TEXT_VALUE"
         const val TEXT_DEF = ""
         const val APP_HISTORY = "search_history"
+        const val SEARCH_DEBOUNCE_DELAY = 2000L
     }
 }

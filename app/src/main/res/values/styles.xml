@@ -168,5 +168,8 @@
         <item name="android:paddingBottom">@dimen/padding_8</item>
     </style>
 
+    <style name="PlayButton">
+        <item name="android:backgroundTint">@color/white</item>
+    </style>
 
 </resources>
