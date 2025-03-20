@@ -83,7 +83,11 @@
         app:layout_constraintTop_toTopOf="@id/play_button"
         app:layout_constraintBottom_toBottomOf="@id/play_button" />
 
-    <ImageView
+    <ImageButton
+        style="@style/PlayButton"
+        android:contentDescription="@string/button_play"
+        app:layout_constraintWidth="@dimen/play_button_size"
+        app:layout_constraintHeight="@dimen/play_button_size"
         android:id="@+id/play_button"
         android:src="@drawable/play_button"
         android:layout_width="wrap_content"
@@ -108,7 +112,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/one_three_five"
+        android:text="@string/zero_time"
         android:layout_marginTop="@dimen/padding_4"
         app:layout_constraintEnd_toEndOf="@id/play_button"
         app:layout_constraintStart_toStartOf="@id/play_button"
@@ -199,7 +203,7 @@
         android:id="@+id/track_genre"
         style="@style/PlayerTrackInfoRight"
         app:layout_constraintEnd_toStartOf="@id/v_line_right_2"
-        app:layout_constraintBottom_toTopOf="@id/info_track_country"
+        app:layout_constraintBottom_toTopOf="@id/track_country"
         app:layout_constraintTop_toBottomOf="@id/track_year"
         tools:text="@string/test_genre" />
 
@@ -209,7 +213,6 @@
         android:text="@string/track_country"
         app:layout_constraintStart_toEndOf="@id/v_line_left_2"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/info_track_genre"
         app:layout_constraintTag="info" />
 
     <TextView
@@ -217,7 +220,6 @@
         style="@style/PlayerTrackInfoRight"
         app:layout_constraintEnd_toStartOf="@id/v_line_right_2"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/track_genre"
         tools:text="@string/test_country" />
 
 

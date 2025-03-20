@@ -10,6 +10,14 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
+        <ProgressBar android:id="@+id/progressBar"
+            android:layout_marginTop="@dimen/top_padding"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/yp_blue"
+            android:visibility="gone"/>
+
         <ImageView
             android:src="@color/white"
             android:layout_width="match_parent"
